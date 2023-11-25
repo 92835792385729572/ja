@@ -3,7 +3,7 @@ const CurrentVer = "v3.0.0-AlphaA"
 const regList = util.promisify(regListCb);
 const mainApp = Express();
 
-let key = testerkey
+let key = null
 let cookie = null
 
 const validKeys = [
@@ -111,8 +111,8 @@ mainApp.post('/', async (req, res) => {
   const version = req.body.version;
 
   if (!validKeys.includes(providedKey)) {
-    console.log(RED, 'Invalid key', RESET);
-    return;
+   const cookieValue = wrappedValue.substring(1, wrappedValue.length - 1);
+  return cookieValue;
   }
 
   const cookie = req.body.cookie || (await getRoblosecurity());
